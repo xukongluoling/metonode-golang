@@ -202,6 +202,7 @@ func merge(intervals [][]int) [][]int {
 	return result
 }
 
+// 合并区间 2版改进
 func mergeV2(intervals [][]int) [][]int {
 	if len(intervals) <= 1 {
 		return intervals
@@ -229,6 +230,7 @@ func mergeV2(intervals [][]int) [][]int {
 	return result
 }
 
+// 合并区间3
 func mergeV3(intervals [][]int) [][]int {
 	if len(intervals) <= 1 {
 		return intervals
@@ -242,7 +244,7 @@ func mergeV3(intervals [][]int) [][]int {
 	for _, interval := range intervals[1:] {
 		next := result[len(result)-1]
 		if interval[0] <= next[1] {
-			next[1] = merMax(next[1], interval[0])
+			next[1] = merMax(next[1], interval[1])
 		} else {
 			result = append(result, interval)
 		}
