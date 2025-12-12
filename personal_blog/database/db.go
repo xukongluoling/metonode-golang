@@ -1,7 +1,9 @@
 package database
 
 import (
+	"fmt"
 	"log"
+	"metonode-golang/personal_blog/config"
 	"metonode-golang/personal_blog/models"
 
 	"gorm.io/driver/mysql"
@@ -11,7 +13,21 @@ import (
 var MySqlDB *gorm.DB
 
 func InitMySqlDB() {
-	dsn := "root:Mysql5735@tcp(127.0.0.1:13306)/personal_blog_task?charset=utf8mb4&parseTime=True&loc=Local"
+	// 从配置文件获取MySQL连接信息
+	mysqlConfig := config.AppConfig.MySQL
+	
+	// 构建DSN
+	dsn := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=%s&parseTime=%t&loc=%s",
+		mysqlConfig.User,
+		mysqlConfig.Password,
+		mysqlConfig.Host,
+		mysqlConfig.Port,
+		mysqlConfig.DBName,
+		mysqlConfig.Charset,
+		mysqlConfig.ParseTime,
+		mysqlConfig.Loc,
+	)
+	
 	var err error
 	MySqlDB, err = gorm.Open(mysql.Open(dsn), &gorm.Config{})
 	if err != nil {

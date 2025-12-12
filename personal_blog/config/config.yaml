@@ -1,0 +1,16 @@
+server:
+  port: 8080
+
+mysql:
+  host: "127.0.0.1"
+  port: "13306"
+  user: "root"
+  password: "Mysql5735"
+  dbname: "personal_blog_task"
+  charset: "utf8mb4"
+  parseTime: true
+  loc: "Local"
+
+jwt:
+  secret: "your-secret-key-here"
+  expireHours: 24
