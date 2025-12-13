@@ -1,0 +1,13 @@
+server:
+  port: "8182"
+
+mysql:
+  host: "127.0.0.1"
+  port: "13306"
+  user: "root"
+  password: "Mysql5735"
+  dbname: "personal_blog_task"
+
+jwt:
+  secret: "you-secret"
+  expire: 120
